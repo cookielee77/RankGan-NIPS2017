@@ -1,0 +1,80 @@
+start with arguments Namespace(ad_g_lr=0.01, epoch=200, g_step=1, gen_batch_size=32, gen_pre_batch_size=64, pre_g_epoch=120, pre_g_lr=0.01, pre_r_epoch=50, prefix='with_batch', r_step=5, rank_batch_size=64, rank_lr=0.0001, ref_size=16, restore_model=False, rollout_num=16, rollout_ratio=0.8, save_model=False)
+Start pre-training generator
+Pretrain generator epoch: 0, test_loss: 10.1692
+Pretrain generator epoch: 5, test_loss: 9.4584
+Pretrain generator epoch: 10, test_loss: 9.2249
+Pretrain generator epoch: 15, test_loss: 9.1864
+Pretrain generator epoch: 20, test_loss: 9.1607
+Pretrain generator epoch: 25, test_loss: 9.1431
+Pretrain generator epoch: 30, test_loss: 9.1280
+Pretrain generator epoch: 35, test_loss: 9.1148
+Pretrain generator epoch: 40, test_loss: 9.1123
+Pretrain generator epoch: 45, test_loss: 9.1032
+Pretrain generator epoch: 50, test_loss: 9.1115
+Pretrain generator epoch: 55, test_loss: 9.0963
+Pretrain generator epoch: 60, test_loss: 9.1131
+Pretrain generator epoch: 65, test_loss: 9.1038
+Pretrain generator epoch: 70, test_loss: 9.1167
+Pretrain generator epoch: 75, test_loss: 9.1050
+Pretrain generator epoch: 80, test_loss: 9.1136
+Pretrain generator epoch: 85, test_loss: 9.0987
+Pretrain generator epoch: 90, test_loss: 9.0927
+Pretrain generator epoch: 95, test_loss: 9.0941
+Pretrain generator epoch: 100, test_loss: 9.1053
+Pretrain generator epoch: 105, test_loss: 9.1138
+Pretrain generator epoch: 110, test_loss: 9.0938
+Pretrain generator epoch: 115, test_loss: 9.0941
+Start pre-training rankder
+Pretrain ranker epoch: 0, training loss: -0.0033
+Pretrain ranker epoch: 5, training loss: -0.2110
+Pretrain ranker epoch: 10, training loss: -0.5366
+Pretrain ranker epoch: 15, training loss: -0.5003
+Pretrain ranker epoch: 20, training loss: -0.7054
+Pretrain ranker epoch: 25, training loss: -0.4086
+Pretrain ranker epoch: 30, training loss: -0.6727
+Pretrain ranker epoch: 35, training loss: -0.7030
+Pretrain ranker epoch: 40, training loss: -0.7003
+Pretrain ranker epoch: 45, training loss: -0.6161
+Restoring parameters from ./save/pre_model.ckpt
+#########################################################################
+Start adversarial training.
+Epoch: 0, test_loss: 9.1131
+Epoch: 5, test_loss: 9.0316
+Epoch: 10, test_loss: 8.9773
+Epoch: 15, test_loss: 8.9129
+Epoch: 20, test_loss: 8.8700
+Epoch: 25, test_loss: 8.8360
+Epoch: 30, test_loss: 8.7975
+Epoch: 35, test_loss: 8.7754
+Epoch: 40, test_loss: 8.7311
+Epoch: 45, test_loss: 8.7234
+Epoch: 50, test_loss: 8.7203
+Epoch: 55, test_loss: 8.7216
+Epoch: 60, test_loss: 8.7059
+Epoch: 65, test_loss: 8.6726
+Epoch: 70, test_loss: 8.6647
+Epoch: 75, test_loss: 8.6231
+Epoch: 80, test_loss: 8.5922
+Epoch: 85, test_loss: 8.5534
+Epoch: 90, test_loss: 8.5302
+Epoch: 95, test_loss: 8.5288
+Epoch: 100, test_loss: 8.4941
+Epoch: 105, test_loss: 8.4586
+Epoch: 110, test_loss: 8.4115
+Epoch: 115, test_loss: 8.3599
+Epoch: 120, test_loss: 8.2399
+Epoch: 125, test_loss: 8.1852
+Epoch: 130, test_loss: 8.1692
+Epoch: 135, test_loss: 8.1494
+Epoch: 140, test_loss: 8.1571
+Epoch: 145, test_loss: 8.1998
+Epoch: 150, test_loss: 8.2216
+Epoch: 155, test_loss: 8.2744
+Epoch: 160, test_loss: 8.3023
+Epoch: 165, test_loss: 8.3314
+Epoch: 170, test_loss: 8.3117
+Epoch: 175, test_loss: 8.3597
+Epoch: 180, test_loss: 8.3690
+Epoch: 185, test_loss: 8.3468
+Epoch: 190, test_loss: 8.3133
+Epoch: 195, test_loss: 8.2724
