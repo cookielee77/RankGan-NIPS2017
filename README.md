@@ -13,8 +13,8 @@ python main.py
 
 ## Note
 * For a fair comparison, we used same LSTMs units, pre-train and test configurations in [SeqGan](https://github.com/LantaoYu/SeqGAN). If you use `tf.contrib.rnn.LSTMCell` instead of their LSTMs implementation, you will obtain different training results.
-* `save/target\_params.pkl` is the parameter for the oracle model from [SeqGan](https://github.com/LantaoYu/SeqGAN). `log` folder stores the log of your model training. 
-* Ideally, you will receive a nll loss between `8.00\-8.50`. However, adversarial training sometimes depends on the quality of pre-train model. 
+* `save/target_params.pkl` is the parameter for the oracle model from [SeqGan](https://github.com/LantaoYu/SeqGAN). `log` folder stores the log of your model training. 
+* Ideally, you will receive a nll loss between `8.00-8.50`. However, adversarial training sometimes depends on the quality of pre-train model. 
 * More evaluation metrics for adversarial text generation can be refered to: [link](https://arxiv.org/pdf/1802.01886.pdf).
 
 ## Citing RankGan
