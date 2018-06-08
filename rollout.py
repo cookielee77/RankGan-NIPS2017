@@ -97,48 +97,46 @@ class ROLLOUT(object):
     ##### This get_reward function is only used 
     ##### when you have a gpu with a large memory
     ################################################
+    def get_reward(self, sess, input_x, rollout_num, ranker, rank_data_loader):
+
+        feed = {self.x: input_x}
+        rollout_results = sess.run(self.rollout_results, feed)
+        ref = rank_data_loader.get_ref()
+        samples = np.reshape(rollout_results, [-1, self.sequence_length])
+        feed = {ranker.input_x: samples, ranker.dropout_keep_prob: 1.0, ranker.input_ref: ref}
+        scores = sess.run(ranker.all_rank_score, feed)
+        rewards = np.transpose(np.mean(scores, axis = 0))
+        return rewards
+
     # def get_reward(self, sess, input_x, rollout_num, ranker, rank_data_loader):
 
     #     feed = {self.x: input_x}
     #     rollout_results = sess.run(self.rollout_results, feed)
     #     ref = rank_data_loader.get_ref()
 
-    #     samples = np.reshape(rollout_results, [-1, self.sequence_length])
-    #     feed = {ranker.input_x: samples, ranker.dropout_keep_prob: 1.0, ranker.input_ref: ref}
-    #     scores = sess.run(ranker.rank_score, feed)
-    #     scores_reshape = np.reshape(scores, [rollout_num, self.sequence_length, self.batch_size])
-    #     rewards = np.transpose(np.mean(scores_reshape, axis = 0))
+    #     rewards = []
+    #     for i in range(rollout_num):
+    #         for given_num in range(1, 20):
+    #             samples = rollout_results[i][given_num-1]
+    #             feed = {ranker.input_x: samples, ranker.dropout_keep_prob: 1.0, ranker.input_ref: ref}
+    #             scores = sess.run(ranker.rank_score, feed)
+    #             ypred = np.array([item for item in scores])
+    #             if i == 0:
+    #                 rewards.append(ypred)
+    #             else:
+    #                 rewards[given_num - 1] += ypred
+
+    #         # the last token reward
+    #         feed = {ranker.input_x: input_x, ranker.dropout_keep_prob: 1.0, ranker.input_ref: ref}
+    #         scores = sess.run(ranker.rank_score, feed)
+    #         ypred = np.array([item for item in scores])
+    #         if i == 0:
+    #             rewards.append(ypred)
+    #         else:
+    #             rewards[20 - 1] += ypred
+
+    #     rewards = np.transpose(np.array(rewards)) / (1.0 * rollout_num)  # batch_size x seq_length
     #     return rewards
-
-    def get_reward(self, sess, input_x, rollout_num, ranker, rank_data_loader):
-
-        feed = {self.x: input_x}
-        rollout_results = sess.run(self.rollout_results, feed)
-        ref = rank_data_loader.get_ref()
-
-        rewards = []
-        for i in range(rollout_num):
-            for given_num in range(1, 20):
-                samples = rollout_results[i][given_num-1]
-                feed = {ranker.input_x: samples, ranker.dropout_keep_prob: 1.0, ranker.input_ref: ref}
-                scores = sess.run(ranker.rank_score, feed)
-                ypred = np.array([item for item in scores])
-                if i == 0:
-                    rewards.append(ypred)
-                else:
-                    rewards[given_num - 1] += ypred
-
-            # the last token reward
-            feed = {ranker.input_x: input_x, ranker.dropout_keep_prob: 1.0, ranker.input_ref: ref}
-            scores = sess.run(ranker.rank_score, feed)
-            ypred = np.array([item for item in scores])
-            if i == 0:
-                rewards.append(ypred)
-            else:
-                rewards[20 - 1] += ypred
-
-        rewards = np.transpose(np.array(rewards)) / (1.0 * rollout_num)  # batch_size x seq_length
-        return rewards
 
     ########################################## 
     ##########################################

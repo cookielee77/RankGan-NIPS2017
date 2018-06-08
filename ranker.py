@@ -71,6 +71,8 @@ class Ranker(object):
         self.num_filters = opt.rank_num_filters
         self.ref_size = FLAGS.ref_size
         self.rank_lr = FLAGS.rank_lr
+        self.rollout_num = FLAGS.rollout_num
+        self.gen_batch_size = FLAGS.gen_batch_size
         self.gamma = opt.gamma
 
 
@@ -140,6 +142,10 @@ class Ranker(object):
             self.scores = self.gamma * tf.reshape(tf.reduce_sum(scores, 1), [-1])
             self.rank_score = tf.reshape(tf.nn.softmax(self.scores), [-1])
             self.log_rank = tf.log(self.rank_score)
+
+            ##################calculate the scores for all rollout sentences
+            scores_reshape = tf.reshape(self.scores, [self.rollout_num, self.seq_len, self.gen_batch_size])
+            self.all_rank_score = tf.nn.softmax(scores_reshape)
 
         # ranking loss
         with tf.name_scope("loss"):
