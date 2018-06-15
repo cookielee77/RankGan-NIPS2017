@@ -1,6 +1,6 @@
 # Adversarial Ranking for Language Generation
 
-## Introcution
+## Introduction
 This is a tensorflow implementation of [Adversarial Ranking for Language Generation](https://arxiv.org/pdf/1705.11001.pdf) by Kevin Lin<sup>\*</sup>, Dianqi Li<sup>\*</sup>, Xiaodong He, Zhengyou Zhang, Ming-Ting Sun, NIPS 2017. 
 
 ## Environment
